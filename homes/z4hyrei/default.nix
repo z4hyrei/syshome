@@ -16,6 +16,10 @@ in
 
     ./configs/brave.nix
     ./configs/xdg.nix
+
+    ./configs/hyprland.nix
+    ./configs/fuzzel.nix
+    ./configs/foot.nix
   ];
 
   home.username = lib.mkDefault userName;

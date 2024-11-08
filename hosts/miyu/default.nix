@@ -187,18 +187,21 @@ in
     ];
   };
 
-  services.desktopManager.plasma6 = {
+  programs.hyprland = {
     enable = true;
-    enableQt5Integration = true;
+    xwayland.enable = true;
   };
 
-  services.displayManager.sddm = {
+  programs.hyprlock = {
     enable = true;
-    wayland.enable = true;
+  };
 
-    settings = {
-      Theme.Font = "Sarasa Fixed J SemiBold";
-    };
+  services.hypridle = {
+    enable = true;
+  };
+
+  services.displayManager.ly = {
+    enable = true;
   };
 
   programs.nix-ld = {
