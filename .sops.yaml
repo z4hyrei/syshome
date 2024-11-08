@@ -1,0 +1,12 @@
+keys:
+  - &users
+    - &user_z4hyrei age1c8hc4nnk53l6hjrl6hpaq3q5ud3fts0m6mww4np4kprkqekery9qdl69nt
+  - &hosts
+    - &host_miyu age1mdqn2jgsepnv6cts0zeathy86j2cau692pzxql7ae8e2znpzavyqdjf3yh
+
+creation_rules:
+  - path_regex: secrets/[^/]+/secret\.yaml$
+    key_groups:
+      - age:
+          - *user_z4hyrei
+          - *host_miyu

@@ -13,6 +13,7 @@ in
 {
   imports = [
     inputs.home-manager.nixosModules.home-manager
+    inputs.sops-nix.nixosModules.sops
     inputs.srvos.nixosModules.desktop
     inputs.srvos.nixosModules.mixins-systemd-boot
     inputs.srvos.nixosModules.mixins-terminfo
@@ -159,6 +160,14 @@ in
   };
 
   security.sudo.wheelNeedsPassword = false;
+
+  sops = {
+    validateSopsFiles = true;
+
+    age.sshKeyPaths = builtins.map (k: k.path) (
+      builtins.filter (k: k.type == "ed25519") config.services.openssh.hostKeys
+    );
+  };
 
   services.openssh = {
     enable = true;

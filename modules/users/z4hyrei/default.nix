@@ -15,6 +15,7 @@ in
 {
   imports = [
     inputs.home-manager.nixosModules.home-manager
+    inputs.sops-nix.nixosModules.sops
   ];
 
   users.users.${userName} = {
@@ -32,7 +33,7 @@ in
 
     shell = pkgs.zsh;
 
-    # hashedPassword = "<Replace `mkpasswd` hashed password>";
+    hashedPasswordFile = config.sops.secrets.z4hyrei-password.path;
   };
 
   home-manager.users.${userName} = {
@@ -42,6 +43,12 @@ in
 
     home.username = lib.mkForce userName;
     home.homeDirectory = lib.mkForce userHome;
+  };
+
+  sops.secrets.z4hyrei-password = {
+    sopsFile = (self.outPath + "/secrets/z4hyrei-password/secret.yaml");
+    format = "yaml";
+    neededForUsers = true;
   };
 
   programs.zsh.enable = lib.mkForce true;

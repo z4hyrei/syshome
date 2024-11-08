@@ -33,6 +33,18 @@
             }
           );
         };
+
+        perSystem =
+          ctx@{ config, pkgs, ... }:
+          {
+            devShells.default = pkgs.mkShellNoCC {
+              packages = [
+                pkgs.sops
+                pkgs.age
+                pkgs.ssh-to-age
+              ];
+            };
+          };
       }
     );
 
@@ -50,6 +62,8 @@
     #
     # Flake utilities
     #
+
+    flake-compat.url = "github:edolstra/flake-compat";
 
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
@@ -75,6 +89,12 @@
 
     impermanence = {
       url = "github:nix-community/impermanence";
+    };
+
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs-stable.follows = "nixpkgs-released";
     };
 
     srvos = {
