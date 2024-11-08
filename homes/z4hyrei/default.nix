@@ -20,6 +20,8 @@ in
     ./configs/hyprland.nix
     ./configs/fuzzel.nix
     ./configs/foot.nix
+
+    ./configs/vscode.nix
   ];
 
   home.username = lib.mkDefault userName;
