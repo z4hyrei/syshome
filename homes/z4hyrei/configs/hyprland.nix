@@ -29,7 +29,7 @@
       ################
 
       # See https://wiki.hyprland.org/Configuring/Monitors/
-      monitor=,preferred,auto,auto
+      monitor=,highres,auto,auto
 
 
       ###################
@@ -41,7 +41,7 @@
       # Set programs that you use
       $terminal = foot
       $fileManager = dolphin
-      $menu = fuzzle
+      $menu = fuzzel
 
 
       #################
@@ -64,6 +64,7 @@
 
       env = XCURSOR_SIZE,24
       env = HYPRCURSOR_SIZE,24
+      env = NIXOS_OZONE_WL,1
 
 
       #####################
